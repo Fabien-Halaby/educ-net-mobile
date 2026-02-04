@@ -102,7 +102,7 @@ export default function LoginScreen() {
         )}
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => router.back()}>
+      <TouchableOpacity onPress={() => router.replace('/')}>
         <Text style={styles.backLink}>Retour</Text>
       </TouchableOpacity>
     </View>

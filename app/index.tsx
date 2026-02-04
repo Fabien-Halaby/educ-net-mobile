@@ -32,14 +32,14 @@ export default function Index() {
 
         <TouchableOpacity 
           style={[styles.button, styles.teacherButton]}
-          onPress={() => alert('Inscription Prof - À venir')}
+          onPress={() => router.push('/(auth)/signup?role=teacher')}
         >
           <Text style={styles.buttonText}>Inscription Professeur</Text>
         </TouchableOpacity>
 
         <TouchableOpacity 
           style={[styles.button, styles.studentButton]}
-          onPress={() => alert('Inscription Étudiant - À venir')}
+          onPress={() => router.push('/(auth)/signup?role=student')}
         >
           <Text style={styles.buttonText}>Inscription Étudiant</Text>
         </TouchableOpacity>
