@@ -1,6 +1,6 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { ClassItem, SchoolItem, SubjectItem } from './types';
+import { ClassItem, ClassListResponse, Profile, SchoolItem, SubjectItem, SubjectListResponse } from './types';
 
 const API_BASE = 'http://192.168.201.145:8080/api';
 
@@ -62,6 +62,12 @@ export const teacherAPI = {
     phone: string;
     subject_ids: number[];
   }) => api.post('/teachers/register', data),
+};
+
+export const profileAPI = {
+  getProfile: () => api.get<{ success: boolean; data: Profile }>('/me'),
+  getMyClasses: () => api.get<ClassListResponse>('/me/classes'),
+  getMySubjects: () => api.get<SubjectListResponse>('/me/subjects'),
 };
 
 export default api;
