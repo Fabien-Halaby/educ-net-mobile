@@ -7,6 +7,10 @@ export const saveAuth = async (token: string, user: any) => {
   ]);
 };
 
+export const getToken = async () => {
+  return AsyncStorage.getItem('access_token');
+};
+
 export const getUser = async () => {
   try {
     const userStr = await AsyncStorage.getItem('user');
@@ -18,6 +22,7 @@ export const getUser = async () => {
 
 export const isAuthenticated = async () => {
   const token = await AsyncStorage.getItem('access_token');
+  console.log("TOKEN: ", !!token)
   return !!token;
 };
 

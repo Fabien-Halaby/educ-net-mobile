@@ -58,21 +58,39 @@ export default function ClassesScreen() {
     );
   }
 
-  const renderClassCard = (cls: ClassItem) => (
-    <TouchableOpacity key={cls.id} style={styles.card} activeOpacity={0.8}>
-      <View style={styles.cardHeader}>
-        <Ionicons name="school" size={32} color="#8B5CF6" />
-        <View>
-          <Text style={styles.cardTitle}>{cls.name}</Text>
-          <Text style={styles.cardSubtitle}>{cls.level} - {cls.section}</Text>
-        </View>
+const renderClassCard = (cls: ClassItem) => (
+  <TouchableOpacity 
+    key={cls.id} 
+    style={styles.card} 
+    activeOpacity={0.8}
+    onPress={() => router.push({
+      pathname: '/chat',
+      params: { classId: cls.id.toString(), className: cls.name }
+    })}
+  >
+    <View style={styles.cardHeader}>
+      <Ionicons name="school" size={32} color="#8B5CF6" />
+      <View style={styles.cardInfo}>
+        <Text style={styles.cardTitle}>{cls.name}</Text>
+        <Text style={styles.cardSubtitle}>{cls.level} - {cls.section}</Text>
       </View>
-      <View style={styles.cardFooter}>
-        <Text style={styles.capacity}>Capacité: {cls.capacity}</Text>
-        <Text style={styles.academicYear}>{cls.academic_year}</Text>
-      </View>
-    </TouchableOpacity>
-  );
+      <TouchableOpacity 
+        style={styles.chatButton}
+        onPress={() => router.push({
+          pathname: '/chat',
+          params: { classId: cls.id.toString(), className: cls.name }
+        })}
+      >
+        <Ionicons name="chatbubble-ellipses-outline" size={24} color="#8B5CF6" />
+      </TouchableOpacity>
+    </View>
+    <View style={styles.cardFooter}>
+      <Text style={styles.capacity}>Capacité: {cls.capacity}</Text>
+      <Text style={styles.academicYear}>{cls.academic_year}</Text>
+    </View>
+  </TouchableOpacity>
+);
+
 
   const renderSubjectCard = (subject: SubjectItem) => (
     <TouchableOpacity key={subject.id} style={styles.card} activeOpacity={0.8}>
@@ -191,4 +209,13 @@ const styles = StyleSheet.create({
     marginTop: 16,
     textAlign: 'center',
   },
+cardInfo: {
+  flex: 1,
+},
+chatButton: {
+  padding: 8,
+  borderRadius: 12,
+  backgroundColor: '#8B5CF620',
+},
+
 });

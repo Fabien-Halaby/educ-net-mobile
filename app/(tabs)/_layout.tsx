@@ -22,6 +22,13 @@ export default function TabsLayout() {
           tabBarIcon: ({ color }) => <Ionicons name="school" size={24} color={color} />,
         }}
       />
+      <Tabs.Screen
+        name="chat"
+        options={{
+          title: 'Messages',
+          tabBarIcon: ({ color }) => <Ionicons name="chatbubble" size={24} color={color} />,
+        }}
+      />
     </Tabs>
   );
 }

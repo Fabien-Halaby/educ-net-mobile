@@ -52,3 +52,26 @@ export interface SubjectListResponse {
   subjects: SubjectItem[];
   total: number;
 }
+
+
+
+export interface Message {
+  id: number;
+  content: string;
+  message_type: 'text' | 'image' | 'file' | 'system';
+  file_url?: string;
+  is_pinned: boolean;
+  created_at: string;
+  updated_at: string;
+  user_id: number;
+  class_id: number;
+  class_name: string;
+  user: {
+    id: number;
+    first_name: string;
+    last_name: string;
+    full_name: string;
+    role: 'student' | 'teacher' | 'admin';
+    avatar_url?: string;
+  };
+}

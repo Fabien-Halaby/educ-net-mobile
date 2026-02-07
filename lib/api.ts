@@ -10,7 +10,6 @@ const api = axios.create({
   timeout: 10000,
 });
 
-//! Intercepteur JWT
 api.interceptors.request.use(async (config) => {
   const token = await AsyncStorage.getItem('access_token');
   if (token) {
